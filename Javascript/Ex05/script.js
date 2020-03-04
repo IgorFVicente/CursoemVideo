@@ -6,9 +6,7 @@ var menor = 100
 
 function adicionar() {
     n = document.getElementById("numero")
-    if (n.value == "" || n.value < 0 || n.value > 100) {
-        alert(`Por favor, digite um número válido.`)
-    } else if (num.indexOf(Number(n.value)) == -1) {
+    if (Number(n.value) > 0 && Number(n.value) < 100 && num.indexOf(Number(n.value)) == -1) {
     num[c] = Number(n.value)
     caixa = document.querySelector("select#caixa")
     caixa.innerHTML += `<option>Valor ${num[c]} digitado.</option>`
@@ -23,10 +21,13 @@ function adicionar() {
     media = soma / c
     let res = document.querySelector("div#res")
     res.innerHTML = ""
+    } else if (num.indexOf(Number(n.value)) != -1) {
+        alert(`Este número já foi incluído, favor escolher outro número.`)
     } else {
-        alert(`Este número já foi incluído, favor escolher outro.`)
+        alert(`Por favor, digite um número válido.`)
     }
     n.value = ""
+    n.focus()
 }
 
 function finalizar() {
